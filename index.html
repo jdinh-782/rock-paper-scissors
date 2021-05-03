@@ -1,4 +1,48 @@
 <!DOCTYPE html>
+
+<style>
+    body
+    {
+        background-image: url('tokyo.jpg');;
+    }
+
+    /*credits to GeeksForGeeks*/
+    .buttonChoices
+    {
+        padding: 15px 25px;
+        font-size: 24px;
+        text-align: center;
+        cursor: pointer;
+        outline: none;
+        color: #fff;
+        background-color: #2872b8;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 9px #999;
+        margin-left: 20px;
+    }
+
+    .buttonChoices:hover
+    {
+        background-color: #1f5a91;
+    }
+
+    .buttonChoices:active
+    {
+        background-color: #1f5a91;
+        box-shadow: 0 px #666;
+        transform: translateY(4px);
+    }
+
+    .titleText
+    {
+        color: white;
+        font-size: 50px;
+        margin-left: 20px;
+    }
+</style>
+
+
 <html>
     <head>
         <title>Rock Paper Scissors</title>
@@ -7,25 +51,79 @@
 
     <body>
         <main>
-            <h1>Rock Paper Scissors</h1>
+            <h1 class="titleText">Rock Paper Scissors</h1>
 
-            <button type="button" onclick="startGame()">Play</button>
+            <button id="gameButton" type="button" class="buttonChoices" onclick="startGame()">Play</button>
 
-            <script type="text/javascript" src="game.js"></script>
+            <button id="ROCK" class="buttonChoices" onclick="chooseRockOption()" disabled>Rock</button>
+            <button id="PAPER" class="buttonChoices" onclick="choosePaperOption()" disabled>Paper</button>
+            <button id="SCISSORS" class="buttonChoices" onclick="chooseScissorsOption()" disabled>Scissors</button>
+
 
             <p id="results"></p>
 
-            </p>
-            <script>
+            <script src="game.js"></script>
+
+            <script type="text/javascript">
                 function startGame()
                 {
-                    var message = game();
-                    document.getElementById("results").innerHTML = message;
-                    console.clear();
+                    document.getElementById("ROCK").disabled = false;
+                    document.getElementById("PAPER").disabled = false;
+                    document.getElementById("SCISSORS").disabled = false;
+                    document.getElementById("gameButton").style.display = "none";
 
-                    return message;
+                    //var message = game();
+                    //document.getElementById("results").innerHTML = message;
+
+                    //console.clear()
+                    //return message
+                } 
+
+                function chooseRockOption()
+                {
+                    //work on getting option
+
+                    var rock = document.getElementById('ROCK').id;
+
+                    executeGame(rock);
+                }
+
+                function choosePaperOption()
+                {
+                    var paper = document.getElementById('PAPER').id;
+
+                    executeGame(paper);
+                }
+
+                function chooseScissorsOption()
+                {
+                    var scissors = document.getElementById('SCISSORS').id;
+
+                    executeGame(scissors);
+                }
+
+                function executeGame(playerSelection)
+                {
+                    let min = Math.ceil(0)
+                    let max = Math.floor(2)
+                    let num = Math.floor(Math.random() * (max - min + 1)) + min;
+
+                    let choices = ['ROCK', 'PAPER', 'SCISSORS']
+                    computerSelection = choices[num];
+
+                    alert('YOU choose: "' + playerSelection + '"\nCOMPUTER chooses: "' + computerSelection + '"');
+
+                    let result = computerPlay(playerSelection, computerSelection);
+                    alert(result);
+
+                    document.getElementById("ROCK").disabled = true;
+                    document.getElementById("PAPER").disabled = true;
+                    document.getElementById("SCISSORS").disabled = true;
+                    document.getElementById("gameButton").style.display = "initial";
                 }
             </script>
+            
+
         </main>
     </body>
 

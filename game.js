@@ -49,7 +49,7 @@ function game()
     var playerScore = 0;
     var computerScore = 0;
 
-    for (let i = 0; i < 5; i++)
+    for (let i = 0; i < 1; i++)
     {
         let min = Math.ceil(0)
         let max = Math.floor(2)
@@ -109,4 +109,11 @@ function game()
 }
 
 
-game();
+const buttonChoices = document.querySelectorAll("button");
+buttonChoices.forEach((button) =>
+{
+    button.addEventListener('click', () => {console.log(button.id);
+    });
+});
+
+//gane();
