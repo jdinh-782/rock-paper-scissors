@@ -45,6 +45,7 @@ function computerPlay(playerSelection, computerSelection)
 
 function game()
 {
+    let gameStr = "";
     var playerScore = 0;
     var computerScore = 0;
 
@@ -57,17 +58,22 @@ function game()
         let choices = ['ROCK', 'PAPER', 'SCISSORS']
         computerSelection = choices[num];
 
-        let playerSelection = prompt().toUpperCase()
+        let playerSelection = prompt("ROCK, PAPER, SCISSORS").toUpperCase()
 
         console.log("user: " + playerSelection)
         console.log("computer: " + computerSelection)
-        alert("user: " + playerSelection + "\ncomputer: " + computerSelection)
+        let message = "user: " + playerSelection + "\ncomputer: " + computerSelection;
+
+        alert(message);
+        gameStr += message + '\n';
 
         //let result = computerPlay(playerSelection, computerSelection)
         //console.log(result)
         
         result = computerPlay(playerSelection, computerSelection)
         alert(result)
+
+        gameStr += result + '\n\n';
 
         if (result.includes("USER"))
             playerScore += 1
@@ -77,14 +83,29 @@ function game()
         console.log(result + '\n')
         console.log('')
     }
-    console.log("User score: " + playerScore + "\nComputer score: " + computerScore)
-    
+    let scoreOutput = ("User score: " + playerScore + "\nComputer score: " + computerScore)
+    console.log(scoreOutput)
+    alert(scoreOutput)
+
+    gameStr += scoreOutput + '\n\n';
+
+    let winner = "";
+
     if (playerScore > computerScore)
-        console.log("You win!")
+        winner = "You win!"
     else if (computerScore == playerScore)
-        console.log("TIE")
+        winner = "TIE"
     else
-        console.log("Computer wins!")
+        winner = "Computer wins!"
+
+    console.log(winner)
+    alert(winner)
+
+    gameStr += winner;
+    console.log('')
+    console.log(gameStr)
+    
+    return gameStr;
 }
 
 

@@ -8,7 +8,24 @@
     <body>
         <main>
             <h1>Rock Paper Scissors</h1>
-            <script src="game.js"></script>
+
+            <button type="button" onclick="startGame()">Play</button>
+
+            <script type="text/javascript" src="game.js"></script>
+
+            <p id="results"></p>
+
+            </p>
+            <script>
+                function startGame()
+                {
+                    var message = game();
+                    document.getElementById("results").innerHTML = message;
+                    console.clear();
+
+                    return message;
+                }
+            </script>
         </main>
     </body>
 
